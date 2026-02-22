@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  namespace: nginx
+  # Spec is for telling the deployment what to do
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+
+      # Used for creating the pod
+  template:
+    metadata:
+      labels:
+        app: nginx
+     # Specification of pod
+    spec:
+        containers:
+         - name: nginx
+           image: nginx:latest
+           ports:
+            - containerPort: 80
+
